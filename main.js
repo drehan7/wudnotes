@@ -1,14 +1,28 @@
 const mainContainer = document.querySelector(".all-notes");
 const addNoteButton = document.querySelector(".add-note");
 const baseNotesURL = 'http://localhost:3000/notes/';
+let form = document.querySelector('form');
 // ---------------------------------------------------------------
 
 showAllNotes();
+
 
 window.addEventListener('submit', e => {
     e.preventDefault();
 })
 
+
+form.addEventListener('submit', e => {
+    postNote();
+})
+
+
+document.addEventListener('click', e => {
+    if (e.target.className === 'delete-note-button') {
+        console.log("del button clicked")
+        delNote(e.target);
+    }
+})
 
 
 
@@ -41,6 +55,8 @@ function delNote(note) {
         .then(() => {
             note.parentElement.remove();
         })
+
+    showAllNotes();
 }
 
 
@@ -54,6 +70,8 @@ function showAllNotes() {
             }
             console.log('notes: ', data.length)
         })
+
+
 }
 
 function renderNote(note) {
