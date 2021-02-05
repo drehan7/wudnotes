@@ -1,3 +1,6 @@
+/* globals moment */
+
+
 const mainContainer = document.querySelector(".all-notes");
 const addNoteButton = document.querySelector(".add-note");
 const baseNotesURL = 'http://localhost:3000/notes/';
@@ -23,8 +26,12 @@ document.addEventListener('click', e => {
         delNote(e.target);
     } else if (e.target.className === 'edit-button') {
         console.log("Edit button clicked", e.target.parentElement.id)
+        toggleEditMode(e.target)
+    } else if (e.target.className === 'edit-submit-button') {
+        console.log("edit submit clicked");
     }
 })
+
 
 
 
@@ -33,6 +40,7 @@ document.addEventListener('click', e => {
 function postNote() {
     let noteTitle = document.querySelector(".new-note-title").value;
     let noteBody = document.querySelector(".new-note-input").value;
+    let dateCreated = new Date();
 
     if (noteTitle.length > 1 || noteBody.length > 1) {
         fetch (baseNotesURL, {
@@ -40,7 +48,8 @@ function postNote() {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 title: noteTitle,
-                body: noteBody
+                body: noteBody,
+                date_created: moment(dateCreated).format('llll')
             })})
             .then(res => res.json())
             .then(data => {
@@ -49,6 +58,19 @@ function postNote() {
         }
 }
 
+function toggleEditMode(note) {
+    let editInputblock = note.parentElement.querySelector('.edit-container');
+    if (editInputblock.style.display === 'none') {
+        editInputblock.style.display = 'block'
+    } else {
+        editInputblock.style.display = 'none'
+    }
+
+}
+
+function editNote (note) {
+
+}
 
 
 function delNote(note) {
@@ -77,28 +99,46 @@ function showAllNotes() {
 }
 
 function renderNote(note) {
-    const listDiv = document.createElement("div");
+    let listDiv = document.createElement("div");
     listDiv.className = "note"
     listDiv.id = note.id;
-    const delButton = document.createElement("button");
+    let delButton = document.createElement("button");
     delButton.className = "delete-note-button";
     delButton.innerHTML = "Delete Note"
-    const title = document.createElement("p")
+    let title = document.createElement("p")
     title.className = 'note-title'
     title.innerHTML = note.title;
-    const noteBody = document.createElement('p');
+    let noteBody = document.createElement('p');
     noteBody.className = 'note-body'
     noteBody.innerHTML = note.body;
+    let noteDate = document.createElement('p');
+    noteDate.innerHTML = "Last updated: " + note.date_created
+
+
+
     let editButton = document.createElement('button');
     editButton.className = 'edit-button';
     editButton.innerHTML = "Edit";
+    let editDiv = document.createElement('div');
+    editDiv.className = 'edit-container';
+    let editInput = document.createElement('input');
+    editInput.className = 'edit-input';
+    let editSubmit = document.createElement('button');
+    editSubmit.className = 'edit-submit-button';
+    editSubmit.innerHTML = "Edit Note";
+
+    editDiv.appendChild(editInput);
+    editDiv.appendChild(editSubmit);
+    editDiv.style.display = 'none';
 
 
 
     listDiv.appendChild(title);
+    listDiv.appendChild(noteDate);
     listDiv.appendChild(noteBody);
     listDiv.appendChild(delButton);
     listDiv.appendChild(editButton);
+    listDiv.appendChild(editDiv);
 
     mainContainer.appendChild(listDiv);
 }
