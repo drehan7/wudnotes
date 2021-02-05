@@ -56,6 +56,9 @@ function postNote() {
                 renderNote(data)
             })
         }
+
+    noteTitle.value = "";
+    noteBody.value = '';
 }
 
 function toggleEditMode(note) {
