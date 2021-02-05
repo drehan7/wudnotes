@@ -21,6 +21,8 @@ document.addEventListener('click', e => {
     if (e.target.className === 'delete-note-button') {
         console.log("del button clicked")
         delNote(e.target);
+    } else if (e.target.className === 'edit-button') {
+        console.log("Edit button clicked", e.target.parentElement.id)
     }
 })
 
@@ -29,10 +31,10 @@ document.addEventListener('click', e => {
 
 // --------------------------------
 function postNote() {
-    const noteTitle = document.querySelector(".new-note-title").value;
-    const noteBody = document.querySelector(".new-note-input").value;
+    let noteTitle = document.querySelector(".new-note-title").value;
+    let noteBody = document.querySelector(".new-note-input").value;
 
-    if (noteTitle.value !== "" || noteBody.value !== "") {
+    if (noteTitle.length > 1 || noteBody.length > 1) {
         fetch (baseNotesURL, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -87,10 +89,16 @@ function renderNote(note) {
     const noteBody = document.createElement('p');
     noteBody.className = 'note-body'
     noteBody.innerHTML = note.body;
+    let editButton = document.createElement('button');
+    editButton.className = 'edit-button';
+    editButton.innerHTML = "Edit";
+
+
 
     listDiv.appendChild(title);
     listDiv.appendChild(noteBody);
     listDiv.appendChild(delButton);
+    listDiv.appendChild(editButton);
 
     mainContainer.appendChild(listDiv);
 }
