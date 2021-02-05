@@ -12,3 +12,12 @@ header {
   margin: 2%;
   border: 2px solid grey;
 }
+
+.note-title {
+  text-decoration: underline;
+  color: grey;
+}
+
+.note-body {
+  font-size: 20px;
+}

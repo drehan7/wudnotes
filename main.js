@@ -64,8 +64,10 @@ function renderNote(note) {
     delButton.className = "delete-note-button";
     delButton.innerHTML = "Delete Note"
     const title = document.createElement("p")
+    title.className = 'note-title'
     title.innerHTML = note.title;
     const noteBody = document.createElement('p');
+    noteBody.className = 'note-body'
     noteBody.innerHTML = note.body;
 
     listDiv.appendChild(title);
