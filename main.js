@@ -22,7 +22,8 @@ form.addEventListener('submit', e => {
 })
 
 bodyInput.addEventListener('change', e => {
-    e.target.style.width = "fit-content";
+    // e.target.parentElement.classList.add("bigger-note-input");
+    // console.log('it worked i think')
 })
 
 document.addEventListener('click', e => {

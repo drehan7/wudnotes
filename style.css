@@ -14,8 +14,10 @@ body {
 }
 
 header {
+  margin-top: 2%;
+  margin-left: 1%;
   font-size: 50px;
-  color: #e9ecef;
+  color: #fdc500;
   font-family: "Raleway Dots", monospace;
 }
 
@@ -43,6 +45,9 @@ header {
   padding: 2rem;
   padding-bottom: 3%;
 }
+.input-form {
+  display: flex;
+}
 
 .create-new-note input,
 input {
@@ -52,26 +57,32 @@ input {
   text-align: left;
   font-size: 1rem;
   color: #fff;
-  width: auto;
+  width: 50%;
   height: 3rem;
   margin: 0.5rem;
   border: none;
   border-radius: 40px;
 }
 
+input.new-note-input {
+  width: 100%;
+}
+
 .create-new-note button {
-  background-color: #6c757d;
+  background-color: #495057;
   font-size: 3rem;
   color: #adb5bd;
-  width: 5rem;
-  height: 5rem;
+  border: none;
+  width: 20%;
+  height: auto;
   border-radius: 50%;
   font-weight: bold;
-  margin-left: 10rem;
+  margin-left: 7rem;
 }
 
 .create-new-note button:hover {
   opacity: 0.85;
+  color: #fff;
 }
 
 .create-new-note ::placeholder {
@@ -83,7 +94,8 @@ input {
   display: block;
   margin: 1rem;
   padding: 0.5rem;
-  max-width: 40%;
+  min-width: 20%;
+  max-width: 25%;
   width: fit-content;
   height: 15%;
   border-radius: 20px;
@@ -94,6 +106,10 @@ input {
 
 .selected-note {
   background-color: #212529;
+}
+
+.bigger-note-input {
+  width: 20%;
 }
 
 .note-title {
@@ -118,6 +134,7 @@ input {
   border: 1px solid #6c757d;
   border-radius: 40px;
   padding: 2rem;
+  overflow-wrap: break-word;
 }
 
 .note button {
