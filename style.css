@@ -10,39 +10,49 @@
 }
 body {
   background-color: #495057;
+  min-width: 30%;
 }
 
 header {
-  font-size: 5rem;
+  font-size: 50px;
   color: #e9ecef;
   font-family: "Raleway Dots", monospace;
 }
 
 .all-notes {
   width: 95%;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  /* margin-left: 2rem;
+  margin-right: 2rem; */
+
+  margin-top: 3%;
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
   flex-wrap: wrap;
+  justify-content: center;
   /* grid-column-gap: 2rem; */
   /* grid-template-columns: auto, auto, auto, auto; */
 }
 
 .create-new-note {
+  border-bottom: 1px dotted #e8eddf;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 4rem;
   padding: 2rem;
+  padding-bottom: 3%;
 }
 
 .create-new-note input,
 input {
   background-color: #6c757d;
-  text-align: center;
+  font-weight: bolder;
+  padding-left: 0.6rem;
+  text-align: left;
   font-size: 1rem;
   color: #fff;
-  width: 30rem;
+  width: auto;
   height: 3rem;
   margin: 0.5rem;
   border: none;
@@ -51,7 +61,7 @@ input {
 
 .create-new-note button {
   background-color: #6c757d;
-  font-size: 2rem;
+  font-size: 3rem;
   color: #adb5bd;
   width: 5rem;
   height: 5rem;
@@ -73,19 +83,48 @@ input {
   display: block;
   margin: 1rem;
   padding: 0.5rem;
-  width: 20%;
+  max-width: 40%;
+  width: fit-content;
   height: 15%;
   border-radius: 20px;
-  background-color: #dee2e6;
+  background-color: #343a40;
   font-weight: bold;
   font-size: 30px;
 }
 
+.selected-note {
+  background-color: #212529;
+}
+
 .note-title {
   text-decoration: underline;
-  color: grey;
+  color: #fdc500;
+  font-size: 18px;
+  font-family: "Raleway";
+}
+
+.note-date {
+  color: white;
+  font-size: 15px;
+  opacity: 0.3;
 }
 
 .note-body {
   font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #6c757d;
+  border-radius: 40px;
+  padding: 2rem;
+}
+
+.note button {
+  background-color: #6c757d;
+  color: white;
+  width: 4rem;
+  height: auto;
+  border-radius: 40px;
+  font-weight: bold;
 }
