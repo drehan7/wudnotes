@@ -2,19 +2,83 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Raleway Dots", monospace;
+}
+
+*:focus {
+  outline: none;
 }
 body {
-  background-color: #bde0fe;
+  background-color: #495057;
 }
 
 header {
-  font-size: 30px;
+  font-size: 5rem;
+  color: #e9ecef;
+  font-family: "Raleway Dots", monospace;
+}
+
+.all-notes {
+  width: 95%;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-column-gap: 2rem; */
+  /* grid-template-columns: auto, auto, auto, auto; */
+}
+
+.create-new-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  padding: 2rem;
+}
+
+.create-new-note input,
+input {
+  background-color: #6c757d;
+  text-align: center;
+  font-size: 1rem;
+  color: #fff;
+  width: 30rem;
+  height: 3rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 40px;
+}
+
+.create-new-note button {
+  background-color: #6c757d;
+  font-size: 2rem;
+  color: #adb5bd;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-left: 10rem;
+}
+
+.create-new-note button:hover {
+  opacity: 0.85;
+}
+
+.create-new-note ::placeholder {
+  color: white;
+  font-family: "Raleway Dots", monospace;
 }
 
 .note {
-  margin: 2%;
-  border: 2px solid grey;
-  background-color: #fdffb6;
+  display: block;
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 20%;
+  height: 15%;
+  border-radius: 20px;
+  background-color: #dee2e6;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .note-title {
