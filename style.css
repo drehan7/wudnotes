@@ -32,6 +32,7 @@ header {
   margin-right: auto;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
   /* grid-column-gap: 2rem; */
   /* grid-template-columns: auto, auto, auto, auto; */
 }
@@ -43,7 +44,7 @@ header {
   justify-content: center;
   height: 4rem;
   padding: 2rem;
-  padding-bottom: 3%;
+  padding-bottom: 2%;
 }
 .input-form {
   display: flex;
@@ -55,9 +56,9 @@ input {
   font-weight: bolder;
   padding-left: 0.6rem;
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #fff;
-  width: 50%;
+  width: 90rem;
   height: 3rem;
   margin: 0.5rem;
   border: none;
@@ -106,6 +107,10 @@ input.new-note-input {
 
 .selected-note {
   background-color: #212529;
+
+  max-width: 15%;
+  display: block;
+  /* animation: editmodewide 0.5s 1; */
 }
 
 .bigger-note-input {
@@ -131,17 +136,45 @@ input.new-note-input {
   color: white;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid #6c757d;
+  /* border: 1px solid #6c757d; */
+  border: 3px solid green;
   border-radius: 40px;
   padding: 2rem;
   overflow-wrap: break-word;
 }
 
+#delete-button-id {
+  background-color: #d90429;
+}
+
+#edit-button-id {
+  background-color: #fdc500;
+  color: black;
+}
+
 .note button {
   background-color: #6c757d;
   color: white;
-  width: 4rem;
+  width: 9rem;
   height: auto;
   border-radius: 40px;
   font-weight: bold;
+}
+
+.edit-input-body {
+  width: 90%;
+  margin: 2%;
+}
+
+#edit-input-title-id {
+  width: 90%;
+}
+
+#edit-submit-button-id {
+  background-color: #fdc500;
+  color: black;
+}
+
+.hidden-delete-button {
+  display: none;
 }
