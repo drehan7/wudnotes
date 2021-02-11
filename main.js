@@ -8,7 +8,6 @@ let form = document.querySelector('form');
 let bodyInput = document.querySelector(".new-note-input");
 let darkModeButton = document.querySelector('#dark-mode-button');
 
-let darkMode = true;
 // ---------------------------------------------------------------
 
 showAllNotes();
@@ -147,6 +146,7 @@ function delNote(note) {
 
 function showAllNotes() {
     let notesContainer = document.querySelector(".all-notes");
+    let noteCount = document.querySelector(".note-count");
     notesContainer.innerHTML = "";
     fetch (baseNotesURL)
         .then(res => res.json())
@@ -155,6 +155,7 @@ function showAllNotes() {
                 renderNote(d)
             }
             console.log('notes: ', data.length)
+            noteCount.innerHTML+=data.length
         })
 
 
