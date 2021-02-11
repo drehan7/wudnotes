@@ -9,7 +9,7 @@
   outline: none;
 }
 body {
-  background-color: #495057;
+  background-color: #4ecdc4;
   min-width: 30%;
 }
 
@@ -17,7 +17,7 @@ header {
   margin-top: 2%;
   margin-left: 1%;
   font-size: 50px;
-  color: #fdc500;
+  color: black;
   font-family: "Raleway Dots", monospace;
 }
 
@@ -56,12 +56,12 @@ header {
 
 .create-new-note input,
 input {
-  background-color: #6c757d;
+  background-color: #ede7e3;
   font-weight: bolder;
   padding-left: 0.6rem;
   text-align: left;
   font-size: 1.3rem;
-  color: #fff;
+  color: black;
   width: 90rem;
   height: 3rem;
   margin: 0.5rem;
@@ -74,7 +74,7 @@ input.new-note-input {
 }
 
 .create-new-note button {
-  background-color: #495057;
+  background-color: #4ecdc4;
   font-size: 3rem;
   color: #adb5bd;
   border: none;
@@ -86,12 +86,12 @@ input.new-note-input {
 }
 
 .create-new-note button:hover {
-  opacity: 0.85;
+  opacity: 0.75;
   color: #fff;
 }
 
 .create-new-note ::placeholder {
-  color: white;
+  color: grey;
   font-family: "Raleway Dots", monospace;
 }
 
@@ -104,13 +104,13 @@ input.new-note-input {
   width: fit-content;
   height: 15%;
   border-radius: 20px;
-  background-color: #343a40;
+  background-color: #b8f2e6;
   font-weight: bold;
   font-size: 30px;
 }
 
 .selected-note {
-  background-color: #212529;
+  background-color: #faf9f9;
 
   max-width: 15%;
   display: block;
@@ -123,42 +123,42 @@ input.new-note-input {
 
 .note-title {
   text-decoration: underline;
-  color: #fdc500;
+  color: black;
   font-size: 18px;
   font-family: "Raleway";
 }
 
 .note-date {
-  color: white;
+  color: grey;
   font-size: 15px;
-  opacity: 0.3;
 }
 
 .note-body {
   font-size: 20px;
   font-weight: bolder;
-  color: white;
+  color: black;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  background-color: #faf3dd;
   /* border: 1px solid #6c757d; */
-  border: 3px solid green;
+  border: 3px dotted #ffd6ba;
   border-radius: 40px;
   padding: 2rem;
   overflow-wrap: break-word;
 }
 
 #delete-button-id {
-  background-color: #d90429;
+  background-color: #feeafa;
 }
 
 #edit-button-id {
-  background-color: #fdc500;
+  background-color: #73d2de;
   color: black;
 }
 
 .note button {
-  background-color: #6c757d;
-  color: white;
+  background-color: #bee3db;
+  color: black;
   width: 9rem;
   height: auto;
   border-radius: 40px;
@@ -175,7 +175,7 @@ input.new-note-input {
 }
 
 #edit-submit-button-id {
-  background-color: #fdc500;
+  background-color: #73d2de;
   color: black;
 }
 
@@ -185,7 +185,7 @@ input.new-note-input {
 
 .note-count {
   font-size: 25px;
-  color: white;
+  color: black;
   margin-right: 10%;
   width: fit-content;
 }

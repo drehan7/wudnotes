@@ -6,6 +6,8 @@ const addNoteButton = document.querySelector(".add-note");
 const baseNotesURL = 'http://localhost:3000/notes/';
 let form = document.querySelector('form');
 let bodyInput = document.querySelector(".new-note-input");
+let darkModeButton = document.querySelector('#dark-mode-button');
+
 // ---------------------------------------------------------------
 
 showAllNotes();
@@ -21,10 +23,7 @@ form.addEventListener('submit', e => {
     postNote();
 })
 
-bodyInput.addEventListener('change', e => {
-    // e.target.parentElement.classList.add("bigger-note-input");
-    // console.log('it worked i think')
-})
+darkModeButton.addEventListener('click', toggleLightDark);
 
 document.addEventListener('click', e => {
     if (e.target.className === 'delete-note-button') {
@@ -38,7 +37,6 @@ document.addEventListener('click', e => {
         editNote(e.target)
     }
 })
-
 
 
 
@@ -70,15 +68,19 @@ function postNote() {
 }
 
 
+
 function toggleEditMode(note) {
     let title = note.parentElement.querySelector(".note-title").textContent
     let body = note.parentElement.querySelector(".note-body").textContent
     let editButton = note.parentElement.querySelector(".edit-button")
+    let delButton = note.parentElement.querySelector('.delete-note-button');
 
 
     let editInputblock = note.parentElement.querySelector('.edit-container');
     if (editInputblock.style.display === 'none') {
         note.parentElement.classList.add("selected-note");
+        editButton.id = "edit-button-id"
+        delButton.classList.remove('hidden-delete-button')
         editInputblock.style.display = 'block'
         editInputblock.querySelector(".edit-input-title").value = title;
         editInputblock.querySelector(".edit-input-body").value = body;
@@ -86,12 +88,25 @@ function toggleEditMode(note) {
     } else {
         editInputblock.style.display = 'none'
         editButton.textContent = "Edit";
+        editButton.id = "";
+        delButton.classList.add("hidden-delete-button")
         note.parentElement.classList.remove('selected-note');
     }
 
 }
 
-// TODO ---------------------------------------------------------------
+function toggleLightDark() {
+    let styleLink = document.querySelector(".style");
+
+    if (styleLink.getAttribute('href') === 'light_style.css') {
+        styleLink.setAttribute('href', 'style.css');
+    } else {
+        styleLink.setAttribute('href', 'light_style.css');
+    }
+
+
+}
+
 function editNote (note) {
     const noteId = note.parentElement.parentElement.id;
     console.log('url: ', baseNotesURL + noteId)
@@ -131,6 +146,7 @@ function delNote(note) {
 
 function showAllNotes() {
     let notesContainer = document.querySelector(".all-notes");
+    let noteCount = document.querySelector(".note-count");
     notesContainer.innerHTML = "";
     fetch (baseNotesURL)
         .then(res => res.json())
@@ -139,6 +155,7 @@ function showAllNotes() {
                 renderNote(d)
             }
             console.log('notes: ', data.length)
+            noteCount.innerHTML+=data.length
         })
 
 
@@ -150,6 +167,8 @@ function renderNote(note) {
     listDiv.id = note.id;
     let delButton = document.createElement("button");
     delButton.className = "delete-note-button";
+    delButton.classList.add('hidden-delete-button')
+    delButton.id = "delete-button-id"
     delButton.innerHTML = "Delete"
     let title = document.createElement("p")
     title.className = 'note-title'
@@ -170,12 +189,14 @@ function renderNote(note) {
     editDiv.className = 'edit-container';
     let editInputTitle = document.createElement('input');
     editInputTitle.className = 'edit-input-title';
+    editInputTitle.id = "edit-input-title-id";
     editInputTitle.placeholder = "Title:"
     let editInputBody = document.createElement('input');
     editInputBody.className = 'edit-input-body';
     editInputBody.placeholder = "Note:"
     let editSubmit = document.createElement('button');
     editSubmit.className = 'edit-submit-button';
+    editSubmit.id = 'edit-submit-button-id';
     editSubmit.innerHTML = "Submit";
 
     editDiv.appendChild(editInputTitle);
