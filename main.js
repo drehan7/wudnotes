@@ -6,6 +6,9 @@ const addNoteButton = document.querySelector(".add-note");
 const baseNotesURL = 'http://localhost:3000/notes/';
 let form = document.querySelector('form');
 let bodyInput = document.querySelector(".new-note-input");
+let darkModeButton = document.querySelector('#dark-mode-button');
+
+let darkMode = true;
 // ---------------------------------------------------------------
 
 showAllNotes();
@@ -21,10 +24,7 @@ form.addEventListener('submit', e => {
     postNote();
 })
 
-bodyInput.addEventListener('change', e => {
-    // e.target.parentElement.classList.add("bigger-note-input");
-    // console.log('it worked i think')
-})
+darkModeButton.addEventListener('click', toggleLightDark);
 
 document.addEventListener('click', e => {
     if (e.target.className === 'delete-note-button') {
@@ -93,6 +93,18 @@ function toggleEditMode(note) {
         delButton.classList.add("hidden-delete-button")
         note.parentElement.classList.remove('selected-note');
     }
+
+}
+
+function toggleLightDark() {
+    let styleLink = document.querySelector(".style");
+
+    if (styleLink.getAttribute('href') === 'light_style.css') {
+        styleLink.setAttribute('href', 'style.css');
+    } else {
+        styleLink.setAttribute('href', 'light_style.css');
+    }
+
 
 }
 
